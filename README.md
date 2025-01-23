@@ -5,7 +5,10 @@
 1. To use screen capture to do OCR to grab text directly
 2. Perform machine translation with NLLBTranslateServer 🌟🌟
 
-## Main Features
-1. Written in Swift
+## Advantage and Features
+1. Written in Swift, and available from MacOS 12 and Up 🌟
 2. Light-weight
 3. Pair with NLLBTranslateServer, so you can do the translation privately and locally
+
+## Notice 🔔
+1. Please run `xattr -cr path/to/nllbtranslator.app` to eliminate warning from Apple Signature, thank you😃
