@@ -75,10 +75,7 @@ class NLLBTranslator: NSObject {
         }
         let sourceText = text
         let pasteBoard = NSPasteboard.general
-        pasteBoard.clearContents()
-        pasteBoard.setString(sourceText, forType: .string)
-        
-        showNotification(text: sourceText)
+
         Task {
                 do {
                     let translatedText = try await TranslationService.shared.translate(
@@ -87,17 +84,15 @@ class NLLBTranslator: NSObject {
                         targetLanguage: preferences.translationTargetLanguage.languageCode()
                     )
                     
-                    // Update UI on main thread
                     DispatchQueue.main.async {
-                        let pasteBoard = NSPasteboard.general
+                        pasteBoard.clearContents()
                         pasteBoard.setString(translatedText, forType: .string)
                         
                         self.showNotification(text: translatedText)
                     }
                 } catch {
                     print("Translation error: \(error)")
-                    // Fallback to original text if translation fails
-                    let pasteBoard = NSPasteboard.general
+                    pasteBoard.clearContents()
                     pasteBoard.setString(sourceText, forType: .string)
                     
                     self.showNotification(text: sourceText)
