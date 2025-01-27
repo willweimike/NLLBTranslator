@@ -5,7 +5,7 @@
 1. Grab text directly from **Screen Capture** with OCR 
 2. Perform machine translation with NLLBTranslateServer with **Keyboard Shortcut** instead of keying manually via CLI
 3. Light-weight, and available from **MacOS 12 and Up**
-4. Translatate **privately and locally**
+4. Translate **privately and locally**
 
 ## Notice 🔔
 1. Please run `xattr -cr path/to/nllbtranslator.app` to eliminate warning from Apple Signature, thank you 😃
