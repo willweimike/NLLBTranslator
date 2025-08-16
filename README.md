@@ -4,7 +4,7 @@
 ## The menu bar app for NLLBTranslateServer 💬
 1. Grab text directly from **Screen Capture** with OCR 
 2. Perform machine translation with NLLBTranslateServer with **Keyboard Shortcut** instead of keying manually via CLI
-3. Light-weight, and available from **MacOS 12 and Up**
+3. Light-weight, and available from **MacOS 13 and Up**
 4. Translate **privately and locally**
 
 ## Setup
