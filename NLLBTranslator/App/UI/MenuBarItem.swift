@@ -10,9 +10,8 @@ class MenubarItem: NSObject {
     let statusBarmenu = NSMenu()
     let captureTextItem = NSMenuItem(title: "Capture Text", action: #selector(captureScreen), keyEquivalent: "")
     let ignoreLineBreaksItem = NSMenuItem(title: "Ignore Line Breaks", action: #selector(ignoreLineBreaks), keyEquivalent: "")
-    let preferencesItem = NSMenuItem(title: "Preferences...", action: #selector(showPreferences), keyEquivalent: "")
-    let quitItem = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
-    let aboutItem = NSMenuItem(title: "About NLLBTranslator...", action: #selector(showAbout), keyEquivalent: "")
+    let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(showPreferences), keyEquivalent: "")
+    let quitItem = NSMenuItem(title: "Quit", action: #selector(quitApp), keyEquivalent: "q")
 
     var cancellable: AnyCancellable?
     private lazy var workQueue: OperationQueue = {
@@ -41,11 +40,11 @@ class MenubarItem: NSObject {
     }
 
     private func buildMenu() {
-        [captureTextItem, ignoreLineBreaksItem, preferencesItem, aboutItem, quitItem].forEach { $0.target = self }
+        [captureTextItem, ignoreLineBreaksItem, preferencesItem, quitItem].forEach { $0.target = self }
         statusBarmenu.addItem(captureTextItem)
         statusBarmenu.addItem(ignoreLineBreaksItem)
+        statusBarmenu.addItem(preferencesItem)
         statusBarmenu.addItem(NSMenuItem.separator())
-        statusBarmenu.addItem(aboutItem)
         if let menu = NSApp.mainMenu?.items.first, let item = menu.submenu?.items.first {
             menu.submenu?.removeItem(item)
             statusBarmenu.addItem(item)
@@ -64,7 +63,7 @@ class MenubarItem: NSObject {
         preferences.ignoreLineBreaks.toggle()
     }
 
-    @objc func quit() {
+    @objc func quitApp() {
         NSApp.terminate(self)
     }
 
@@ -75,10 +74,11 @@ class MenubarItem: NSObject {
     @objc func showPreferences() {
         var windowRef: NSWindow
         windowRef = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 100, height: 100),
-            styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
+            contentRect: NSRect(x: 100, y: 100, width: 100, height: 100),
+            styleMask: [.titled, .closable, .fullSizeContentView],
             backing: .buffered, defer: false
         )
+        windowRef.title = "Preferences"
         windowRef.contentView = NSHostingView(rootView: SettingsView().environmentObject(Preferences.shared))
         windowRef.makeKeyAndOrderFront(nil)
     }

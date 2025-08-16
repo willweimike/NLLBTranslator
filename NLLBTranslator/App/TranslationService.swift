@@ -5,13 +5,14 @@ class TranslationService {
     private let baseURL = "http://127.0.0.1:8080/translate"
     
     private let sourceLanguageMap: [String: String] = [
-        "en_US": "eng_Latn",
-        "zh": "zho_Hant",
-        "de": "deu_Latn",
-        "fr": "fra_Latn",
-        "pt": "eng_Latn",
-        "es": "spa_Latn",
-        "it": "eng_Latn"
+        "en-US": "eng_Latn",
+        "zh-Hant": "zho_Hant",
+        "de-DE": "deu_Latn",
+        "fr-FR": "fra_Latn",
+        "ko-KR": "kor_Hang",
+        "zh-Hans": "zho_Hans",
+        "it-IT": "ita_Latn",
+        "ja-JP": "jpn_Jpan"
     ]
     
     struct TranslationRequest: Codable {

@@ -146,9 +146,7 @@ class NLLBTranslator: NSObject {
     }
     
     private func handleDetectionResults(results: [Any]?) -> String? {
-        
-        
-        
+          
         guard let results = results, results.count > 0 else {
             return nil
         }

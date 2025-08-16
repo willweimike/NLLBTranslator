@@ -38,63 +38,57 @@ class Preferences: ObservableObject {
 
     enum RecongitionLanguage: String, CaseIterable {
         case English = "English"
+        case ChineseSimplified = "Chinese Simplified"
+        case ChineseTraditional = "Chinese Traditional"
         case French = "French"
+        case Korean = "Korean"
+        case Japanese = "Japanese"
         case Italian = "Italian"
         case German = "German"
-        case Spanish = "Spanish"
-        case Portuguese = "Portuguese"
-        case Chinese = "Chinese"
 
         func languageCode() -> String {
             switch self {
             case .English:
-                return "en_US"
+                return "en-US"
             case .French:
-                return "fr"
+                return "fr-FR"
+            case .Korean:
+                return "ko-KR"
             case .Italian:
-                return "it"
+                return "it-IT"
+            case .ChineseTraditional:
+                return "zh-Hant"
+            case .ChineseSimplified:
+                return "zh-Hans"
+            case .Japanese:
+                return "ja-JP"
             case .German:
-                return "de"
-            case .Spanish:
-                return "es"
-            case .Portuguese:
-                return "pt"
-            case .Chinese:
-                return "zh"
+                return "de-DE"
             }
         }
     }
-    
+        
     enum TranslationLanguage: String, CaseIterable {
         case English = "English"
         case ChineseSimplified = "Chinese Simplified"
         case ChineseTraditional = "Chinese Traditional"
-        case Estonian = "Estonian"
-        case Finnish = "Finnish"
         case French = "French"
-        case Hindi = "Hindi"
-        case Romanian = "Romanian"
-        case Latvian = "Latvian"
-        case Russian = "Russian"
-        case Spanish = "Spanish"
-        case Turkish = "Turkish"
-        case Kinyarwanda = "Kinyarwanda"
+        case Korean = "Korean"
+        case Japanese = "Japanese"
+        case Italian = "Italian"
+        case German = "German"
+        
         
         func languageCode() -> String {
             switch self {
             case .English: return "eng_Latn"
             case .ChineseSimplified: return "zho_Hans"
             case .ChineseTraditional: return "zho_Hant"
-            case .Estonian: return "est_Latn"
-            case .Finnish: return "fin_Latn"
+            case .Korean: return "kor_Hang"
+            case .Japanese: return "jpn_Jpan"
             case .French: return "fra_Latn"
-            case .Hindi: return "hin_Deva"
-            case .Romanian: return "ron_Latn"
-            case .Latvian: return "lvs_Latn"
-            case .Russian: return "rus_Cyrl"
-            case .Spanish: return "spa_Latn"
-            case .Turkish: return "tur_Latn"
-            case .Kinyarwanda: return "kin_Latn"
+            case .German: return "de-DE"
+            case .Italian: return "ita_Latn"
             }
         }
     }
