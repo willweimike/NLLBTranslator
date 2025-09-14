@@ -5,7 +5,6 @@ import SwiftUI
 class Preferences: ObservableObject {
     static let shared = Preferences()
     enum PreferencesKeys: String {
-        case CaptureSound
         case ResultNotification
         case ShowMenuBarIcon
         case IgnoreLineBreaks
@@ -87,17 +86,12 @@ class Preferences: ObservableObject {
             case .Korean: return "kor_Hang"
             case .Japanese: return "jpn_Jpan"
             case .French: return "fra_Latn"
-            case .German: return "de-DE"
+            case .German: return "deu_Latn"
             case .Italian: return "ita_Latn"
             }
         }
     }
 
-    @Published var captureSound: Bool {
-        didSet {
-            Preferences.setValue(value: captureSound, key: .CaptureSound)
-        }
-    }
     
     @Published var resultNotification: Bool {
         didSet {
@@ -136,7 +130,6 @@ class Preferences: ObservableObject {
     }
 
     init() {
-        captureSound = Preferences.getValue(key: .CaptureSound) as? Bool ?? true
         resultNotification = Preferences.getValue(key: .ResultNotification) as? Bool ?? false
         showMenuBarIcon = Preferences.getValue(key: .ShowMenuBarIcon) as? Bool ?? true
         ignoreLineBreaks = Preferences.getValue(key: .IgnoreLineBreaks) as? Bool ?? true

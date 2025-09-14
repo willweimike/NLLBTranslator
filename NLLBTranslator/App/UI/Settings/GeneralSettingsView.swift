@@ -11,11 +11,6 @@ struct GeneralSettingsView: View {
             ToggleView(label: "Startup", secondLabel: "Start at login",
                        state: $launchAtLogin.isEnabled,
                        width: width)
-
-            ToggleView(label: "Sounds",
-                       secondLabel: "Play sounds",
-                       state: $preferences.captureSound,
-                       width: width)
             ToggleView(label: "Notifications",
                        secondLabel: "Show recognized text",
                        state: $preferences.resultNotification,

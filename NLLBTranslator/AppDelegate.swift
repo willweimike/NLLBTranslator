@@ -26,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }).store(in: &cancellable)
         
         setupShortcuts()
-        
     }
     
     func application(_: NSApplication, open urls: [URL]) {
@@ -34,10 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             switch url.host?.lowercased() {
             case "capture":
                 nllbtranslator.capture(.captureScreen)
-            case "showpreferences":
-                if let menu = NSApp.mainMenu?.items.first?.submenu {
-                    menu.performActionForItem(at: 0)
-                }
+            case "showPreferences":
+                // Route to the Settings scene
+                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+                NSApp.activate(ignoringOtherApps: true)
             default:
                 return
             }
@@ -50,4 +49,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    // FIX: Be explicit that we do NOT auto-terminate when last window closes.
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        false
+    }
 }

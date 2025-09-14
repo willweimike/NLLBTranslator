@@ -17,7 +17,7 @@ struct SettingsView: View {
                 .tabItem {
                     Label("Shortcuts", systemImage: "command")
                 }
-                .tag(Tabs.general)
+                .tag(Tabs.shortcuts) // FIX: was incorrectly .general
             AboutSettingsView()
                 .tabItem {
                     Label("About", systemImage: "info")

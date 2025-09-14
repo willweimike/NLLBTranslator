@@ -10,7 +10,7 @@ class MenubarItem: NSObject {
     let statusBarmenu = NSMenu()
     let captureTextItem = NSMenuItem(title: "Capture Text", action: #selector(captureScreen), keyEquivalent: "")
     let ignoreLineBreaksItem = NSMenuItem(title: "Ignore Line Breaks", action: #selector(ignoreLineBreaks), keyEquivalent: "")
-    let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(showPreferences), keyEquivalent: "")
+    let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(showPreferences), keyEquivalent: ",")
     let quitItem = NSMenuItem(title: "Quit", action: #selector(quitApp), keyEquivalent: "q")
 
     var cancellable: AnyCancellable?
@@ -40,18 +40,12 @@ class MenubarItem: NSObject {
     }
 
     private func buildMenu() {
-        [captureTextItem, ignoreLineBreaksItem, preferencesItem, quitItem].forEach { $0.target = self }
+        [captureTextItem, ignoreLineBreaksItem, quitItem].forEach { $0.target = self }
         statusBarmenu.addItem(captureTextItem)
         statusBarmenu.addItem(ignoreLineBreaksItem)
-        statusBarmenu.addItem(preferencesItem)
         statusBarmenu.addItem(NSMenuItem.separator())
-        if let menu = NSApp.mainMenu?.items.first, let item = menu.submenu?.items.first {
-            menu.submenu?.removeItem(item)
-            statusBarmenu.addItem(item)
-        }
-        statusBarmenu.addItem(NSMenuItem.separator())
+        // Removed the fragile manipulation of main menu items.
         statusBarmenu.addItem(quitItem)
-
         statusBarmenu.delegate = self
     }
 
@@ -71,16 +65,10 @@ class MenubarItem: NSObject {
         NSApp.orderFrontStandardAboutPanel()
     }
 
+    // FIX: Use the SwiftUI Settings scene instead of creating an unmanaged window.
     @objc func showPreferences() {
-        var windowRef: NSWindow
-        windowRef = NSWindow(
-            contentRect: NSRect(x: 100, y: 100, width: 100, height: 100),
-            styleMask: [.titled, .closable, .fullSizeContentView],
-            backing: .buffered, defer: false
-        )
-        windowRef.title = "Preferences"
-        windowRef.contentView = NSHostingView(rootView: SettingsView().environmentObject(Preferences.shared))
-        windowRef.makeKeyAndOrderFront(nil)
+        NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
 }
 

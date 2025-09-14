@@ -17,9 +17,6 @@ class NLLBTranslator: NSObject {
     
     var screenCaptureArguments: [String] {
         var out = ["-i"] // capture screen interactively, by selection or window
-        if !preferences.captureSound {
-            out.append("-x") // do not play sounds
-        }
         out.append(screenShotFilePath)
         return out
     }
