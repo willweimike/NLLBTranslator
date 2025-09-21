@@ -1,5 +1,6 @@
-> Because I am a student, I could not afford the fee of Apple Developer, so the binary is not code-signed, I am sorry.
 # NLLBTranslator - Translate from Screen Capture 🌟
+![Latest Release](https://img.shields.io/github/v/release/willweimike/NLLBTranslator?display_name=tag&label=Latest%20Release&sort=semver) ![Downloads](https://img.shields.io/github/downloads/willweimike/NLLBTranslator/total?label=Downloads)
+> Because I am a student, I could not afford the fee of Apple Developer, so the binary is not code-signed.
 <img width="200" alt="Appicon" src="https://github.com/user-attachments/assets/f5474dc8-5c59-461a-9a8f-d9f2f38e30ca" />
 
 ## The menu bar app for NLLBTranslateServer 💬
