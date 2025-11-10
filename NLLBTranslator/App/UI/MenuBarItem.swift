@@ -10,7 +10,7 @@ class MenubarItem: NSObject {
     let statusBarmenu = NSMenu()
     let captureTextItem = NSMenuItem(title: "Capture Text", action: #selector(captureScreen), keyEquivalent: "")
     let ignoreLineBreaksItem = NSMenuItem(title: "Ignore Line Breaks", action: #selector(ignoreLineBreaks), keyEquivalent: "")
-    let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(showPreferences), keyEquivalent: ",")
+    let preferencesItem = NSMenuItem(title: "Preferences...", action: #selector(showPreferences), keyEquivalent: "")
     let quitItem = NSMenuItem(title: "Quit", action: #selector(quitApp), keyEquivalent: "q")
 
     var cancellable: AnyCancellable?
@@ -44,6 +44,10 @@ class MenubarItem: NSObject {
         statusBarmenu.addItem(captureTextItem)
         statusBarmenu.addItem(ignoreLineBreaksItem)
         statusBarmenu.addItem(NSMenuItem.separator())
+        if let menu = NSApp.mainMenu?.items.first, let item = menu.submenu?.items.first {
+            menu.submenu?.removeItem(item)
+            statusBarmenu.addItem(item)
+        }
         // Removed the fragile manipulation of main menu items.
         statusBarmenu.addItem(quitItem)
         statusBarmenu.delegate = self

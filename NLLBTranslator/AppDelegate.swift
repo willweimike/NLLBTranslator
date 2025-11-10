@@ -33,10 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             switch url.host?.lowercased() {
             case "capture":
                 nllbtranslator.capture(.captureScreen)
-            case "showPreferences":
-                // Route to the Settings scene
-                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-                NSApp.activate(ignoringOtherApps: true)
+            case "showpreferences":
+                if let menu = NSApp.mainMenu?.items.first?.submenu {
+                    menu.performActionForItem(at: 0)
+                }
             default:
                 return
             }
