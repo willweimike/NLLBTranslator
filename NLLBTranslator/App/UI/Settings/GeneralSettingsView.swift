@@ -16,10 +16,6 @@ struct GeneralSettingsView: View {
                        state: $preferences.resultNotification,
                        width: width)
 
-            ToggleView(label: "Menu bar", secondLabel: "Show icon",
-                       state: $preferences.showMenuBarIcon,
-                       width: width)
-
             if preferences.showMenuBarIcon {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -48,7 +44,7 @@ struct GeneralSettingsView: View {
             }
         }
         .padding(20)
-        .frame(width: 410, height: preferences.showMenuBarIcon ? 270 : 190)
+        .frame(width: 410, height: 270)
     }
 }
 

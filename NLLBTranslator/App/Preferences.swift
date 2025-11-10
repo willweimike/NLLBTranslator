@@ -130,8 +130,8 @@ class Preferences: ObservableObject {
     }
 
     init() {
+        showMenuBarIcon = true
         resultNotification = Preferences.getValue(key: .ResultNotification) as? Bool ?? false
-        showMenuBarIcon = Preferences.getValue(key: .ShowMenuBarIcon) as? Bool ?? true
         ignoreLineBreaks = Preferences.getValue(key: .IgnoreLineBreaks) as? Bool ?? true
 
         recongitionLanguage = .English
